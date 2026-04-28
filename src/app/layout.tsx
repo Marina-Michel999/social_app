@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { ThemeProvider } from '@mui/material/styles';
+import theme from "@/theme";
+import ReduxProvider from "@/component/ReduxProvider/ReduxProvider";
+import NavBar from "@/component/Navbar/Navbar";
+import { CssBaseline, InputLabel } from "@mui/material";
+import toast, { Toaster } from 'react-hot-toast';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +32,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <AppRouterCacheProvider>
+        <ThemeProvider theme={theme}>
+          <ReduxProvider>
+            <CssBaseline/>
+            <NavBar/>
+            <Toaster position="top-right"/>
+            {children}
+          </ReduxProvider>
+        </ThemeProvider>
+      </AppRouterCacheProvider>        
       </body>
     </html>
   );

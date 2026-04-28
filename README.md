@@ -34,3 +34,21 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+# liberaries
+- style ===> mui
+- ajax ===> axious ==> done
+- form ===> formik  ==> done
+- state manegment ===> redux
+- icons ===> mui 
+- routing ==> app
+
+# folder structure
+
+- component ==> app component
+- sevices ==> when treat with api
+- utlis ==> pure function
+- types ==> type script
+- actions ==> related to next
+- store ===> redux
+- hooks ===> doesnt remember

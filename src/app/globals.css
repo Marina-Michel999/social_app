@@ -1,6 +1,8 @@
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --mainColor:  #F63049;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -39,4 +41,19 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.active{
+  background-color: var(--mainColor);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+.active-mobile{
+  color: var(--mainColor);
+}
+
+.nav-link:hover{
+  color: var(--mainColor);
+
 }
