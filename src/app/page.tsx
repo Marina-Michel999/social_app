@@ -11,6 +11,7 @@ import {  getAllPosts } from "@/store/features/posts.slice";
 import Loading from "@/component/Loading/Loading";
 import { useRouter } from "next/navigation";
 import { getCookie } from "cookies-next/client";
+import PostForm from "@/component/PostForm/PostForm";
 
 
 export default function Home() {
@@ -32,6 +33,9 @@ export default function Home() {
   return (
     <>
     <Box sx={{paddingTop:"60px" ,   background: "#F1F1F1", minHeight:"100%"}}>
+      <Box sx={{width:{ xs:"300px", sm:"400px" , md:"500px" , lg:"700px" } , mx:"auto" , mt:2  , mb:4}}>
+        <PostForm></PostForm>
+      </Box>
       <Box  sx={{width:{ xs:"300px", sm:"400px" , md:"500px" , lg:"700px" } , mx:"auto" , md:{width:"300px"} , lg:{width:"300px"}}}>
         {posts ? posts.map((post)=> <PostCard key={post._id} postInfo={post}></PostCard> ) : <Loading></Loading>}
       </Box>      
