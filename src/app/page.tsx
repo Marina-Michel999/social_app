@@ -7,14 +7,22 @@ import { Box } from "@mui/material";
 import { myStore } from "@/store/store";
 import { useAppDispach, useAppSelector } from "@/hooks/store.hooks";
 import { useEffect } from "react";
-import { clearComments, getAllPosts } from "@/store/features/posts.slice";
+import {  getAllPosts } from "@/store/features/posts.slice";
 import Loading from "@/component/Loading/Loading";
+import { useRouter } from "next/navigation";
+import { getCookie } from "cookies-next/client";
+
 
 export default function Home() {
+  const router = useRouter();
   console.log(myStore)
   const dispach = useAppDispach();
   useEffect(()=>{
     dispach(getAllPosts())
+    const token: string | null | undefined = getCookie("token");
+     if (!token) {
+      router.push("/login");
+    }
   } , [])
   const {posts} = useAppSelector((store)=>{return store.PostReducer})
     const {postComments} = useAppSelector((store)=>store.PostReducer)

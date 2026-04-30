@@ -18,11 +18,16 @@ import logo from '../../assets/logo.png'
 import Image from 'next/image'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { get } from 'http';
+import { getCookie } from 'cookies-next/client';
 
 const pages = ['login', 'home' , 'profile' , 'signup'];
 const settings = ['Profile', 'Logout'];
 
 function NavBar() {
+  //get token from cookies
+  const token: string | null | undefined = getCookie("token");
+  console.log(`token from cookie: ${token}`);
   //& get pass name name
   const currentPass = usePathname();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -102,10 +107,11 @@ function NavBar() {
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography sx={{ textAlign: 'center', textTransform:"capitalize" , color:"primary.contrastText" , fontSize:"1rem" }}>
               <Link 
-              href={` ${page === "home" ? "/" : `/${page}`}` } 
-              className={` ${currentPass === `/${page}` ? 'active-mobile' : page === "home" && currentPass === `/`  ? "active-mobile" : 'nav-link'} `  }
-              // ^nav-link ==> respnsible for hover 
-              >
+              href={
+                    !token
+                    ? (page === "login" || page === "signup" ? `/${page}` : "/login")
+                    : (page === "home" ? "/" : `/${page}`)
+                    }>
               {page}
               </Link>
                   </Typography>
